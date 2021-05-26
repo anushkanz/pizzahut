@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class name="com.weihua.model.Users">
+        <id column="id" name="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <property column="LoginName" generated="never" lazy="false" name="loginName" type="string"/>
+        <property column="Password" generated="never" lazy="false" name="password" type="string"/>
+        <property column="UserName" generated="never" lazy="false" name="userName" type="string"/>
+        <property column="AdminType" generated="never" lazy="false" name="adminType" type="int"/>
+        <property column="ChildBL12" generated="never" lazy="false" name="childBL12" type="int"/>
+        <property column="UserTitle" generated="never" lazy="false" name="userTitle" type="string"/>
+        <property column="PhotoUrl" generated="never" lazy="false" name="photoUrl" type="string"/>
+        
+        <set inverse="true" name="userLeaves" sort="unsorted">
+            <key column="userLeaves"/>
+            <one-to-many class="com.weihua.model.Leave"/>
+        </set>
+
+        <many-to-one cascade="save-update" class="com.weihua.model.Users" column="authorizedBy" name="authorizedBy"/>
+   
+ 
+    </class>
+</hibernate-mapping>

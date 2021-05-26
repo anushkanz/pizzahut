@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class name="com.weihua.model.Leave" table="t_Leave">
+        <id name="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <many-to-one cascade="save-update" class="com.weihua.model.Users" column="userLeaves" name="leaveUser"/>
+        <many-to-one cascade="save-update" class="com.weihua.model.LeaveType" column="leaveType" name="leaveType"/>
+
+        <property column="AppDate" generated="never" lazy="false" name="appDate" type="date"/>
+        <property column="StartDate" generated="never" lazy="false" name="startDate" type="date"/>
+        <property column="EndDate" generated="never" lazy="false" name="endDate" type="date"/>
+        <property column="Reason" generated="never" lazy="false" name="reason" type="string"/>
+        <property column="ContactDetails" generated="never" lazy="false" name="contactDetails" type="string"/>
+        <property column="Dissemination" generated="never" lazy="false" name="dissemination" type="string"/>
+        <property column="Comments" generated="never" lazy="false" name="comments" type="string"/>
+        <property column="LeaveStatus" generated="never" lazy="false" name="leaveStatus" type="string"/>
+    </class>
+</hibernate-mapping>

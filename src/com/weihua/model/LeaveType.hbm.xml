@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+    <class name="com.weihua.model.LeaveType" table="LeaveType">
+        <id name="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <property column="LeaveName" generated="never" lazy="false" name="leaveName" type="string"/>
+        <property column="LeaveDesc" generated="never" lazy="false" name="leaveDesc" type="string"/>
+        <set inverse="true" name="leaves" sort="unsorted">
+            <key column="leaveType"/>
+            <one-to-many class="com.weihua.model.Leave"/>
+        </set>
+        <property column="NoOfDays" name="noOfDays" type="int"/>
+    </class>
+</hibernate-mapping>
